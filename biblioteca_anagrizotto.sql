@@ -6,7 +6,7 @@ USE	biblioteca_anaclaragrizotto;				-- usa
 
 CREATE TABLE Livro(
 	id_livro INT PRIMARY KEY AUTO_INCREMENT,
-    isbn VARCHAR(255) NOT NULL,
+    isbn VARCHAR(255) UNIQUE NOT NULL,
     titulo VARCHAR(255) NOT NULL,
     descricao TEXT
     
@@ -19,8 +19,6 @@ CREATE TABLE Categoria(
     
 );
 
-
-DROP TABLE IF EXISTS Livro_Categoria;
 
 CREATE TABLE Livro_Categoria(
     id_livro_categoria INT PRIMARY KEY AUTO_INCREMENT,
@@ -53,7 +51,7 @@ CREATE TABLE Usuario(
 	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     numero_identificacao INT NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     data_cadastro DATE,
     nivel_associacao ENUM('Basico', 'Premium', 'VIP') NOT NULL
     
@@ -161,8 +159,10 @@ INSERT INTO Livro_Categoria (id_livro, id_categoria) VALUES
 	(9, 9),   -- Essencialismo - Produtividade / Desenvolvimento pessoal
 	(10, 10); -- As 5 Linguagens do Amor - Relacionamentos / Autoajuda
 
-SELECT id_livro, titulo, descricao FROM Livro;
-
-
-
-
+SELECT * FROM Livro;
+SELECT * FROM Autor;
+SELECT * FROM Categoria;
+SELECT * FROM Emprestimo;
+SELECT * FROM Usuario;
+SELECT * FROM Livro_Autor;
+SELECT * FROM Livro_Categoria;
